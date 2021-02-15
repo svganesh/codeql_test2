@@ -24,8 +24,17 @@ jobs:
     - name: Run the Diff Checker
       run: |
         python current/artifact.py
-    - name: artifacts
+    - name: upload_artifact
       uses: actions/upload-artifact@v2
       with:
          name: sarif
-         path: /home/runner/work/codeql_test2/codeql_test2/dict.json        
+         path: /home/runner/work/codeql_test2/codeql_test2/dict.json
+    - name: download_artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: my-artifact
+        path: /home/runner/work/codeql_test2/
+
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: /home/runner/work/codeql_test2/
