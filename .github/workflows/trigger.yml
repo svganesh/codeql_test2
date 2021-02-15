@@ -32,7 +32,7 @@ jobs:
     - name: download_artifact
       uses: actions/download-artifact@v2
       with:
-        name: my-artifact
+        name: sarif
         path: /home/runner/work/codeql_test2/
 
     - name: Display structure of downloaded files
