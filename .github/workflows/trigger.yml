@@ -38,3 +38,6 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R
       working-directory: /home/runner/work/codeql_test2/
+    - name: Push To Datadog
+      run: |
+        python current/push.py
