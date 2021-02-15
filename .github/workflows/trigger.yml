@@ -1,0 +1,26 @@
+name: Test download artifact
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Current Branch
+      uses: actions/checkout@v2
+      with:
+        path: current
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f current/requirements.txt ]; then pip install -r current/requirements.txt; fi
+    - name: Run the Diff Checker
+      run: |
+        python current/artifact.py
