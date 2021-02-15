@@ -16,7 +16,7 @@ def get_response():
 
   
 print("PWD :: ")
-os.system("pwd 2>&1 response")
+os.system("pwd > response 2>&1")
 print(get_response())
 
 
@@ -27,6 +27,6 @@ f = open("dict.json","w")
 f.write(json)
 f.close()
 
-os.system("cat dict.json 2>&1 response")
+os.system("cat dict.json > response 2>&1")
 print(get_response())
 
