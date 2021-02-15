@@ -24,3 +24,8 @@ jobs:
     - name: Run the Diff Checker
       run: |
         python current/artifact.py
+    - name: artifacts
+      uses: actions/upload-artifact@v2
+      with:
+         name: sarif
+         path: /home/runner/work/codeql_test2/codeql_test2/dict.json        
