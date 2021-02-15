@@ -39,5 +39,7 @@ jobs:
       run: ls -R
       working-directory: /home/runner/work/codeql_test2/
     - name: Push To Datadog
+      env: 
+        DD_API_KEY: ${{ secrets.DD_API_KEY }}
       run: |
         python current/push.py
