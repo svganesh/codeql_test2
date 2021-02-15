@@ -1,5 +1,7 @@
 import os
 import json
+import requests
+
 
 def get_response():
     msg = ""
@@ -14,10 +16,11 @@ def get_response():
         os.remove("error")
     return msg
 
-  
+ 
 
-os.system("cat /home/runner/work/codeql_test2/codeql_test2/dict.json > response 2>&1")
-print(get_response())
-print("##################")
-os.system("cat /home/runner/work/codeql_test2/dict.json > response 2>&1")
-print(get_response())
+url = 'https://http-intake.logs.datadoghq.com/v1/input'
+with open('/home/runner/work/codeql_test2/codeql_test2/dict.json') as f:
+    json_obj = json.load(f)
+x = requests.post(url, data = json_obj, headers={'DD-API-KEY':os.environ["DD_API_KEY"], 'Content-Type':'application/json'})
+
+print(x.text)
